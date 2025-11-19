@@ -1,6 +1,8 @@
 package OOP.SortObject;
 import java.util.*;
 
+//Comparable = “I compare myself” (compareTo)
+//Comparator = “I compare two others” (compare)
 public class example {
     public static void main(String[] args) {
         Student[] s1 = new Student[4];
@@ -9,19 +11,34 @@ public class example {
         s1[2] = new Student(3, "krish", 98.1, 13);
         s1[3] = new Student(4, "harsh", 66.8, 10);
 
+//        Arrays.sort(s1, new Comparator<Student>() {
+//            @Override
+//            public int compare(Student o1, Student o2) {
+//                return o1.age - o2.age;
+//            }
+//        });
+
+//        Arrays.sort(s1, new Comparator<Student>() {
+//            @Override
+//            public int compare(Student o1, Student o2) {
+//                return o1.name.charAt(0) - o2.name.charAt(0);
+//            }
+//        });
+
         Arrays.sort(s1);
-        for(Student s : s1){
-            System.out.println(s.name);
+        for (Student s : s1) {
+            System.out.println(s.name + " " + s.perc + " " + s.age);
         }
     }
 }
+
 class Student implements Comparable<Student> {
     int RollNo;
     String name;
     double perc;
     int age;
 
-    public Student(int No,String name,double perc, int age){
+    public Student(int No, String name, double perc, int age) {
         this.RollNo = No;
         this.name = name;
         this.perc = perc;
@@ -30,7 +47,7 @@ class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student s) {
-        if(this.name.charAt(0) > s.name.charAt(0)){
+        if (this.name.charAt(0) > s.name.charAt(0)) {
             return 1;
         } else if (this.name.charAt(0) < s.name.charAt(0)) {
             return -1;
@@ -38,6 +55,7 @@ class Student implements Comparable<Student> {
         return 0;
 //        return (int) (this.perc - s.perc);
     }
+
 
 //    @Override
 //    public int compareTo(Student s) {
@@ -51,6 +69,6 @@ class Student implements Comparable<Student> {
 
 //    @Override
 //    public int compareTo(Student s) {
-//        return s.age - this.age;
+//        return this.age - s.age;
 //    }
 }
